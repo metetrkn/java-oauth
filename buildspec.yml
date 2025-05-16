@@ -6,15 +6,13 @@ phases:
       java: corretto21
   build:
     commands:
-      
-echo Build completed on date
-mvn package -Dmaven.test.skip,
-post_build:
-  commands:
-echo Build completed on data,
-,
+      - echo Build started on `date`
+      - mvn package -Dmaven.test.skip=true
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
 artifacts:
   files:
-    
-target/*.jar
-discard-paths: yes
+    - target/*.jar
+  discard-paths: yes
